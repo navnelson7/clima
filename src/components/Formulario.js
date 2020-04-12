@@ -1,14 +1,7 @@
 import React,{Fragment,useState} from 'react';
-const Formulario = () => {
+const Formulario = ({busqueda,guardarBusqueda,guardarConsultar}) => {
     //state del formulario
     const [error,guardarError] = useState(false)
-
-    const [busqueda,guardarBusqueda] = useState({
-        ciudad:'',
-        pais:''
-    })
-
-
     //extraer ciudad y pais
     const {ciudad,pais} = busqueda;
     //funcion que cola los elementes en el state
@@ -29,6 +22,7 @@ const Formulario = () => {
         }
         guardarError(false);
         //pasarlo al componenete principal
+        guardarConsultar(true);
     }
     return ( 
         <Fragment>
