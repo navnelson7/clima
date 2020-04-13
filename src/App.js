@@ -6,21 +6,23 @@ function App() {
     ciudad:'',
     pais:''
   })
-  const [consultar,guardarConsultar] = useState(false);
 
+  const [consultar,guardarConsultar] = useState(false);
+  const [resultado,guardarResultado] = useState(({}))
   const {ciudad,pais} =  busqueda;
+
   useEffect(()=>{
     const consultarAPI = async () => {
       if(consultar){
         const appId = 'a07b5338dad76a1fece951f0d78b8698';
-        const url = `https://api.openweathermap.org/data/2.5/weather?q=${ciudad},${pais}&
-        appid=${appId}`
+        const url = `https://api.openweathermap.org/data/2.5/weather?q=${ciudad},${pais}&appid=${appId}`
         const respuesta = await fetch(url);
         const resultado = await respuesta.json();
-        console.log(resultado);
+        guardarResultado(resultado);
       }
     }
-  },[consultar]);
+    consultarAPI();
+  },[consultar,busqueda,ciudad,pais]);
 
 
 
@@ -37,6 +39,7 @@ function App() {
                 busqueda={busqueda}
                 guardarBusqueda={guardarBusqueda}
                 guardarConsultar={guardarConsultar}
+                resultado={resultado}
               />
             </div>
             <div className='col m6 s12'>

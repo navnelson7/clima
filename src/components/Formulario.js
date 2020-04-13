@@ -1,7 +1,8 @@
 import React,{Fragment,useState} from 'react';
-const Formulario = ({busqueda,guardarBusqueda,guardarConsultar}) => {
+const Formulario = ({busqueda,guardarBusqueda,guardarConsultar,resultado}) => {
     //state del formulario
     const [error,guardarError] = useState(false)
+
     //extraer ciudad y pais
     const {ciudad,pais} = busqueda;
     //funcion que cola los elementes en el state
@@ -36,6 +37,7 @@ const Formulario = ({busqueda,guardarBusqueda,guardarConsultar}) => {
                         type='text'
                         name='ciudad'
                         id='ciudad'
+                        value={ciudad}
                         onChange={handleChange}
                     />
                     <label htmlFor="ciudad">Ciudad:</label>
@@ -44,17 +46,18 @@ const Formulario = ({busqueda,guardarBusqueda,guardarConsultar}) => {
                     <select
                         name="pais"
                         id='pais'
+                        value={pais}
                         onChange={handleChange}
                     >
                         <option value="">----Seleccione un país</option>
-                        <option value="US">Estados Unidos</option>
-                        <option value="MX">México</option>
-                        <option value="AR">Argentina</option>
-                        <option value="CO">Colombia</option>
-                        <option value="CR">Costa Rica</option>
-                        <option value="ES">España</option>
-                        <option value="PE">Perú</option>
-                        <option value="SV">El Salvador</option>
+                        <option value="us">Estados Unidos</option>
+                        <option value="mx">México</option>
+                        <option value="ar">Argentina</option>
+                        <option value="co">Colombia</option>
+                        <option value="cr">Costa Rica</option>
+                        <option value="es">España</option>
+                        <option value="pe">Perú</option>
+                        <option value="sv">El Salvador</option>
                     </select>
                     <label htmlFor='pais'>País:</label>
                 </div>
