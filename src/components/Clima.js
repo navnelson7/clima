@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 const Clima = ({resultado}) => {
     //extrare los valores
     const {name,main} = resultado;
@@ -14,15 +15,25 @@ const Clima = ({resultado}) => {
                 <p className="temperatura">
                     {parseFloat(main.temp - kelvin,10).toFixed(2)} <span>&#x2103;</span>
                 </p>
-                <p className="temperatura">
-                    {parseFloat(main.temp_max - kelvin,10).toFixed(2)} <span>&#x2103;</span>
-                </p>
-                <p className="temperatura">
-                    {parseFloat(main.temp_min - kelvin,10).toFixed(2)} <span>&#x2103;</span>
-                </p>
+                <div className="row">
+                    <div className="col s6">
+                        Maxima
+                        <p className=""> 
+                            {parseFloat(main.temp_max - kelvin,10).toFixed(2)} <span>&#x2103;</span>
+                        </p>
+                    </div>
+                    <div className="col s6">
+                        Mínima:
+                        <p className=""> 
+                            {parseFloat(main.temp_min - kelvin,10).toFixed(2)} <span>&#x2103;</span>
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
      );
 }
- 
+ Clima.propTypes ={
+     resultado: PropTypes.object.isRequired
+ }
 export default Clima;
